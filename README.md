@@ -21,7 +21,7 @@ Your goal is to create an application that uses the [OpenTrivia API](https://ope
 The app should adhere to the following requirements:
 
 - I should be able to select a difficulty when starting a new quiz. The app should have at least three difficulty levels.
-- The app should have two views: one to select the difficulty and the questions that I need answer, one at a time.
+- The app should have two views: one to select the difficulty, and another one the questions that I need to answer, one question at a time.
 - While participating in a quiz, I should be able to see how many questions are left and which question I’m currently answering.
 - Every time I start a new quiz, I should get new random questions.
 - Questions should be a mix of true/false and multiple choice.
