@@ -2,7 +2,7 @@
 
 The purpose of this assignment is for the developer to exhibit their familiarity with front-end technologies, programming patterns and to provide a sample of what clean and reusable code means.
 
-You should spend between 2 and 4 hours on this, depending on your familiarity with Vue.
+You should spend between 4 and 6 hours on this, depending on your familiarity with Vue.
 
 ### How to succeed
 
@@ -34,5 +34,5 @@ The app should adhere to the following requirements:
 - Feel free to add your own twist to the game - but make sure that you satisfy the requirements written above!
 
 
-Feel free to arrange the scaffolding of the application the way you want: the current one is the default template from `vue-cli`
+Feel free to arrange the scaffolding of the application the way you want: the current one is the default template from `create-vue`
 
