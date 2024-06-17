@@ -63,6 +63,6 @@ describe('HomePage', () => {
     const playButton = wrapper.findComponent({ name: 'Button' })
     await playButton.trigger('click')
 
-    // expect(mockRouter.push).toHaveBeenCalledWith({ name: 'game' })
+    expect(mockRouter.push).toHaveBeenCalledWith({ name: 'game' })
   })
 })

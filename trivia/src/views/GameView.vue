@@ -10,6 +10,14 @@
       :selected-answer="selectedAnswer"
       @select="selectAnswer"
     />
+    <!-- <div v-if="currentIndex + 1 === totalQuestions" class="quiz-finished">
+      <h2>Quiz Finished!</h2>
+      <p>Your final score is: {{ score }}</p>
+    </div> -->
+    <Modal v-if="currentIndex + 1 === totalQuestions" @close="currentIndex + 1 !== totalQuestions">
+      <h2>Quiz Finished!</h2>
+      <p>Your final score is: {{ score }}</p>
+    </Modal>
     <div class="button-wrap">
       <Button
         :isDisabled="currentIndex + 1 !== totalQuestions"
@@ -29,9 +37,10 @@ import { useCounterStore } from '../stores/counter'
 import { fetchQuestions } from '../utils/fetchQuestions'
 import Question from '../components/Question.vue'
 import Button from '../components/Button.vue'
+import Modal from '../components/Modal.vue'
 
 export default defineComponent({
-  components: { Question, Button },
+  components: { Question, Button, Modal },
   setup() {
     const store = useCounterStore()
     const router = useRouter()
@@ -58,6 +67,7 @@ export default defineComponent({
       } else {
         score.value--
       }
+      // I've made a timeout to change questions automatically without Next button. But it can be implemented differently.
       setTimeout(nextQuestion, 1000)
     }
 
