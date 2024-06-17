@@ -100,7 +100,6 @@ export default defineComponent({
       loadQuestions()
     })
 
-    console.log(showModal.value)
     return {
       store,
       score,
