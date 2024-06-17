@@ -14,12 +14,8 @@
       <h2>Quiz Finished!</h2>
       <p>Your final score is: {{ score }}</p>
     </Modal>
-    <div class="button-wrap">
-      <Button
-        :isDisabled="currentIndex + 1 !== totalQuestions"
-        :buttonText="'Play Again'"
-        @click="resetQuiz"
-      />
+    <div class="button-wrap" v-if="isFinished">
+      <Button :buttonText="'Play Again'" @click="resetQuiz" />
       <Button :buttonText="'Select difficulty'" @click="goBack" />
     </div>
   </div>
@@ -45,6 +41,7 @@ export default defineComponent({
     const score = ref(0)
     const selectedAnswer = ref<string | null>(null)
     const showModal = ref(false)
+    const isFinished = ref(false)
 
     const currentQuestion = computed(() => questionItems.value[currentIndex.value])
     const totalQuestions = computed(() => questionItems.value.length)
@@ -78,6 +75,7 @@ export default defineComponent({
         selectedAnswer.value = null
       } else {
         showModal.value = true
+        isFinished.value = true
       }
     }
 
@@ -86,6 +84,7 @@ export default defineComponent({
       score.value = 0
       selectedAnswer.value = null
       showModal.value = false
+      isFinished.value = false
       loadQuestions()
     }
 
@@ -101,6 +100,7 @@ export default defineComponent({
       loadQuestions()
     })
 
+    console.log(showModal.value)
     return {
       store,
       score,
@@ -112,7 +112,8 @@ export default defineComponent({
       resetQuiz,
       goBack,
       showModal,
-      closeModal
+      closeModal,
+      isFinished
     }
   }
 })
