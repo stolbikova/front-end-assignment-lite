@@ -120,8 +120,7 @@ export default defineComponent({
 
 <style scoped>
 .game-page {
-  max-width: 800px;
-  min-width: 600px;
+  width: 600px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -146,7 +145,7 @@ h1 {
 
 @media only screen and (max-width: 500px) {
   .game-page {
-    min-width: unset;
+    width: 100%;
   }
 }
 </style>
