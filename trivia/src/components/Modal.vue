@@ -2,7 +2,7 @@
   <div class="modal-overlay" @click="close">
     <div class="modal-content" @click.stop>
       <slot></slot>
-      <button @click="close">Close</button>
+      <span class="close-icon" @click="close">&times;</span>
     </div>
   </div>
 </template>
@@ -43,5 +43,15 @@ export default {
   max-width: 500px;
   width: 100%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>

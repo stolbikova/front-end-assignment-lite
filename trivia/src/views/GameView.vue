@@ -10,11 +10,7 @@
       :selected-answer="selectedAnswer"
       @select="selectAnswer"
     />
-    <!-- <div v-if="currentIndex + 1 === totalQuestions" class="quiz-finished">
-      <h2>Quiz Finished!</h2>
-      <p>Your final score is: {{ score }}</p>
-    </div> -->
-    <Modal v-if="currentIndex + 1 === totalQuestions" @close="currentIndex + 1 !== totalQuestions">
+    <Modal v-if="showModal" @close="closeModal">
       <h2>Quiz Finished!</h2>
       <p>Your final score is: {{ score }}</p>
     </Modal>
@@ -48,6 +44,7 @@ export default defineComponent({
     const currentIndex = ref(0)
     const score = ref(0)
     const selectedAnswer = ref<string | null>(null)
+    const showModal = ref(false)
 
     const currentQuestion = computed(() => questionItems.value[currentIndex.value])
     const totalQuestions = computed(() => questionItems.value.length)
@@ -79,6 +76,8 @@ export default defineComponent({
       if (currentIndex.value < questionItems.value.length - 1) {
         currentIndex.value++
         selectedAnswer.value = null
+      } else {
+        showModal.value = true
       }
     }
 
@@ -86,11 +85,16 @@ export default defineComponent({
       currentIndex.value = 0
       score.value = 0
       selectedAnswer.value = null
+      showModal.value = false
       loadQuestions()
     }
 
     const goBack = () => {
       router.push({ name: 'home' })
+    }
+
+    const closeModal = () => {
+      showModal.value = false
     }
 
     onMounted(() => {
@@ -106,7 +110,9 @@ export default defineComponent({
       currentIndex,
       totalQuestions,
       resetQuiz,
-      goBack
+      goBack,
+      showModal,
+      closeModal
     }
   }
 })
