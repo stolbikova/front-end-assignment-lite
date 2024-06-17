@@ -26,6 +26,6 @@ jobs:
       working-directory: trivia
 
     - name: Run tests
-      run: npm test:unit
+      run: npm run test:unit
       working-directory: trivia
 
