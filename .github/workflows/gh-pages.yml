@@ -20,13 +20,13 @@ jobs:
 
     - name: Clear node_modules and package-lock.json
       run: |
+        cd trivia
         rm -rf node_modules
         rm -f package-lock.json
       working-directory: trivia
 
     - name: Install dependencies and build
       run: |
-        cd trivia
         npm install
         npm run build
 
