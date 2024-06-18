@@ -27,7 +27,6 @@ jobs:
 
     - name: Install dependencies and build
       run: |
-        cd trivia
         npm install
         npm run build
       working-directory: trivia
