@@ -1,9 +1,10 @@
-import { mount } from '@vue/test-utils'
+import { mount, VueWrapper } from '@vue/test-utils'
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
+
 import Modal from '../Modal.vue'
 
 describe('Modal.vue', () => {
-  let wrapper: any
+  let wrapper: VueWrapper<any>
 
   beforeEach(() => {
     wrapper = mount(Modal, {

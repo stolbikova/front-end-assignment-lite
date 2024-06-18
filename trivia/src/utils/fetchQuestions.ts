@@ -2,6 +2,11 @@ import axios from 'axios'
 import { BASE_API_URL } from '../constants'
 import { decodeHtmlEntities } from './decodeHtmlEntities'
 
+interface QuestionItem {
+  question: string
+  incorrect_answers: string[]
+}
+
 export const fetchQuestions = async (
   difficulty: string = 'easy',
   numberOfQuestions: number = 5
@@ -14,9 +19,10 @@ export const fetchQuestions = async (
         type: 'multiple'
       }
     })
-    return response.data.results.map((question: any) => ({
+    return response.data.results.map((question: QuestionItem) => ({
       ...question,
-      question: decodeHtmlEntities(question.question)
+      question: decodeHtmlEntities(question.question),
+      incorrect_answers: question.incorrect_answers.map((answer) => decodeHtmlEntities(answer))
     }))
   } catch (error) {
     console.error('Error fetching questions:', error)
