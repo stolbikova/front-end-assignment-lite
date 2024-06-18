@@ -18,6 +18,12 @@ jobs:
       with:
         node-version: '16'
 
+    - name: Clear node_modules and package-lock.json
+      run: |
+        rm -rf node_modules
+        rm -f package-lock.json
+      working-directory: trivia
+
     - name: Install dependencies and build
       run: |
         cd trivia
