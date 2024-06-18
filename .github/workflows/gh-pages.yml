@@ -27,11 +27,14 @@ jobs:
 
     - name: Install dependencies and build
       run: |
+        cd trivia
         npm install
         npm run build
+      working-directory: trivia
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./trivia/dist
+
