@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, VueWrapper } from '@vue/test-utils'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import type { Mock } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
@@ -21,8 +21,8 @@ vi.mock('vue-router', () => {
 vi.mock('@/utils/fetchQuestions')
 
 describe('GamePage', () => {
-  let store: any
-  let wrapper: any
+  let store: ReturnType<typeof useCounterStore>
+  let wrapper: VueWrapper<any>
   let mockRouter = { push: vi.fn() }
 
   const mockQuestions = [
@@ -87,8 +87,8 @@ describe('GamePage', () => {
     const firstOption = question
       .findAll('button')
       .find((button: ButtonI) => button.text() === mockQuestions[0].incorrect_answers[0])
-    expect(firstOption.exists()).toBe(true)
-    await firstOption.trigger('click')
+    expect(firstOption?.exists()).toBe(true)
+    await firstOption?.trigger('click')
 
     expect(wrapper.vm.selectedAnswer).toBe(mockQuestions[0].incorrect_answers[0])
     expect(wrapper.vm.score).toBe(-1) // Incorrect answer should decrement the score

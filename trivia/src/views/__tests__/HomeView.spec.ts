@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount, shallowMount, VueWrapper } from '@vue/test-utils'
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import type { Mock } from 'vitest'
 import { useRouter } from 'vue-router'
@@ -15,8 +15,8 @@ vi.mock('vue-router', () => {
 })
 
 describe('HomePage', () => {
-  let store: any
-  let wrapper: any
+  let store: ReturnType<typeof useCounterStore>
+  let wrapper: VueWrapper<any>
   let mockRouter = { push: vi.fn() }
 
   beforeEach(() => {
